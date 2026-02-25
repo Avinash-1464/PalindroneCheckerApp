@@ -12,10 +12,10 @@ public class PalindroneCheckerApp {
         if(ispal){
             System.out.println(str+" is palindrome");
         }
+
         else{
             System.out.println(str+" is not a palindrome");
         }
-
 
     }
 }
