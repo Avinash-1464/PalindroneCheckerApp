@@ -13,5 +13,6 @@ public class PalindroneCheckerApp {
             System.out.println(str+" is palindrome");
         }
 
+
     }
 }
