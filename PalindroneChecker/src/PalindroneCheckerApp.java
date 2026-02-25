@@ -2,16 +2,25 @@ public class PalindroneCheckerApp {
 
     public static void main(String[] args) {
         String str = "madam";
-        String reversedStr = "";
-        boolean ispal = true;
-        for (int i = str.length() - 1; i >= 0; i--) {
-            reversedStr = reversedStr + str.charAt(i);
+
+        char[] charArray = str.toCharArray();
+
+        int start = 0;
+        int end = charArray.length - 1;
+        boolean isPal = true;
+
+        while (start < end) {
+            if (charArray[start] != charArray[end]) {
+                isPal = false;
+                break;
+            }
+            start++;
+            end--;
         }
-        if (str.equals(reversedStr)) {
+        if (isPal) {
             System.out.println(str + " is palindrome");
         } else {
             System.out.println(str + " is not a palindrome");
         }
-
     }
 }
