@@ -1,21 +1,22 @@
+import java.util.Stack;
+
 public class PalindroneCheckerApp {
 
     public static void main(String[] args) {
         String str = "madam";
+        Stack<Character> stack = new Stack<>();
 
-        char[] charArray = str.toCharArray();
 
-        int start = 0;
-        int end = charArray.length - 1;
+        for (int i = 0; i < str.length(); i++) {
+            stack.push(str.charAt(i));
+        }
+
         boolean isPal = true;
-
-        while (start < end) {
-            if (charArray[start] != charArray[end]) {
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) != stack.pop()) {
                 isPal = false;
                 break;
             }
-            start++;
-            end--;
         }
         if (isPal) {
             System.out.println(str + " is palindrome");
