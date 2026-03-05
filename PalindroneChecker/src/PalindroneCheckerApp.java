@@ -2,17 +2,32 @@ import java.util.Scanner;
 
 public class PalindroneCheckerApp {
 
-    public static boolean isPalindrome(String str, int start, int end) {
 
-        if (start >= end) {
-            return true;
+    static class PalindromeChecker {
+        public boolean checkPalindrome(String input) {
+
+            if (input == null) {
+                return false;
+            }
+
+            String str = input.replaceAll("\\s+", "").toLowerCase();
+
+
+            return isPalindrome(str, 0, str.length() - 1);
         }
 
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
-        }
+        private boolean isPalindrome(String str, int start, int end) {
 
-        return isPalindrome(str, start + 1, end - 1);
+            if (start >= end) {
+                return true;
+            }
+
+            if (str.charAt(start) != str.charAt(end)) {
+                return false;
+            }
+
+            return isPalindrome(str, start + 1, end - 1);
+        }
     }
 
     public static void main(String[] args) {
@@ -22,9 +37,9 @@ public class PalindroneCheckerApp {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+        PalindromeChecker checker = new PalindromeChecker();
 
-        boolean result = isPalindrome(normalized, 0, normalized.length() - 1);
+        boolean result = checker.checkPalindrome(input);
 
         if (result) {
             System.out.println("The given string \"" + input + "\" is a Palindrome (ignoring case and spaces).");
