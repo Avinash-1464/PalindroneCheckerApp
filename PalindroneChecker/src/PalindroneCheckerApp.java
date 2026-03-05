@@ -20,14 +20,16 @@ public class PalindroneCheckerApp {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter a string: ");
-        String str = sc.nextLine();
+        String input = sc.nextLine();
 
-        boolean result = isPalindrome(str, 0, str.length() - 1);
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+
+        boolean result = isPalindrome(normalized, 0, normalized.length() - 1);
 
         if (result) {
-            System.out.println("The given string \"" + str + "\" is a Palindrome.");
+            System.out.println("The given string \"" + input + "\" is a Palindrome (ignoring case and spaces).");
         } else {
-            System.out.println("The given string \"" + str + "\" is NOT a Palindrome.");
+            System.out.println("The given string \"" + input + "\" is NOT a Palindrome (ignoring case and spaces).");
         }
 
         sc.close();
