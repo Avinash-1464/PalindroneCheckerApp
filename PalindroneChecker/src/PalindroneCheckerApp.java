@@ -1,35 +1,41 @@
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.Scanner;
+
 public class PalindroneCheckerApp {
 
     public static void main(String[] args) {
-        String str = "madam";
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        Scanner sc = new Scanner(System.in);
 
+        System.out.print("Enter a string: ");
+        String str = sc.nextLine();
 
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-            queue.add(ch);
-            stack.push(ch);
+        Deque<Character> deque = new LinkedList<>();
+
+        for (char ch : str.toCharArray()) {
+            deque.addLast(ch);
         }
 
-        boolean isPal = true;
-        while (!queue.isEmpty()) {
-            char queueChar = queue.remove();
-            char stackChar = stack.pop();
-            if (queueChar != stackChar) {
-                isPal = false;
+        boolean isPalindrome = true;
+
+        while (deque.size() > 1) {
+
+            char firstChar = deque.removeFirst();
+            char lastChar = deque.removeLast();
+
+            if (firstChar != lastChar) {
+                isPalindrome = false;
                 break;
             }
         }
 
-        if (isPal) {
-            System.out.println(str + " is palindrome");
+        if (isPalindrome) {
+            System.out.println("The given string \"" + str + "\" is a Palindrome.");
         } else {
-            System.out.println(str + " is not a palindrome");
+            System.out.println("The given string \"" + str + "\" is NOT a Palindrome.");
         }
+
+        sc.close();
     }
 }
